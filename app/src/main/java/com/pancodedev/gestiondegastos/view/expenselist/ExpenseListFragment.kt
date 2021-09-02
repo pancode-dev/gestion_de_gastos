@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pancodedev.gestiondegastos.databinding.FragmentExpenseListBinding
 
 /**
@@ -32,6 +33,14 @@ class ExpenseListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val adapter = ExpenseListAdapter(listOf())
+        binding.recyclerviewExpenseList.adapter = adapter
+        binding.recyclerviewExpenseList.layoutManager = LinearLayoutManager(context)
+
+        viewModel.getExpenseList().observe(viewLifecycleOwner, {
+            adapter.updateDataSet(it)
+        })
     }
 
     companion object {

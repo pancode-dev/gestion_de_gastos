@@ -18,16 +18,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun insertDataWhenEmpty() {
-        if(viewModel.getExpenseList().value!!.isEmpty()) {
-            val expenseList = listOf(
-                ExpenseEntity(expenseName = "Borgir", expenseAmount = 2.17f),
-                ExpenseEntity(expenseName = "Keck", expenseAmount = 7.83f),
-                ExpenseEntity(expenseName = "Geim", expenseAmount = 35.99f),
-            )
-
-            viewModel.insertExpenseList(expenseList)
-        }
-    }
-
 }
