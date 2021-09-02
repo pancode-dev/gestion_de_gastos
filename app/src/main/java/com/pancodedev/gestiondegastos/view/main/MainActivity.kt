@@ -16,24 +16,18 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
-        viewModel.getExpenseList().observe(this, { list ->
-            if(list.isNotEmpty())
-                list.forEach {
-                    Log.d(this.localClassName, "${it.expenseName} - ${it.expenseAmount}")
-                }
-            else
-                Log.d(this.localClassName, "empty database u.u")
-        })
+    }
 
-        //Test DB by inserting expenses list and reading from DB
-        val expenseList = listOf(
-            ExpenseEntity(expenseName = "Borgir", expenseAmount = 2.17f),
-            ExpenseEntity(expenseName = "Keck", expenseAmount = 7.83f),
-            ExpenseEntity(expenseName = "Geim", expenseAmount = 35.99f),
-        )
+    private fun insertDataWhenEmpty() {
+        if(viewModel.getExpenseList().value!!.isEmpty()) {
+            val expenseList = listOf(
+                ExpenseEntity(expenseName = "Borgir", expenseAmount = 2.17f),
+                ExpenseEntity(expenseName = "Keck", expenseAmount = 7.83f),
+                ExpenseEntity(expenseName = "Geim", expenseAmount = 35.99f),
+            )
 
-        viewModel.insertExpenseList(expenseList)
-
+            viewModel.insertExpenseList(expenseList)
+        }
     }
 
 }
