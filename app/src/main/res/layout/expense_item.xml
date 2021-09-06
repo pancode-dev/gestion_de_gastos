@@ -8,6 +8,7 @@
 
     <TextView
         android:id="@+id/textview_expense_name"
+        style="@style/Widget.GestionDeGastos.TextView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toStartOf="@+id/textview_expense_amount"
@@ -17,10 +18,12 @@
 
     <TextView
         android:id="@+id/textview_expense_amount"
+        style="@style/Widget.GestionDeGastos.TextView"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textview_expense_name"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="$100.25" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
