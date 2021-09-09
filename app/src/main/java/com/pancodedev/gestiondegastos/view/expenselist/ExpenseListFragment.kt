@@ -36,7 +36,6 @@ class ExpenseListFragment : Fragment() {
 
         val adapter = ExpenseListAdapter(listOf())
         binding.recyclerviewExpenseList.adapter = adapter
-        binding.recyclerviewExpenseList.layoutManager = LinearLayoutManager(context)
 
         viewModel.getExpenseList().observe(viewLifecycleOwner, {
             adapter.updateDataSet(it)
